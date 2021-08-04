@@ -343,8 +343,10 @@ public class FabricUtil {
         // return response
         String response = "";
         for (ProposalResponse pres : res) {
-            String stringResponse = new String(pres.getChaincodeActionResponsePayload());
-            response += stringResponse;
+            if(pres.getStatus() == ProposalResponse.Status.SUCCESS){
+                String stringResponse = new String(pres.getChaincodeActionResponsePayload());
+                response += stringResponse;
+            }
         }
         return response;
     }
