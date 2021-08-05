@@ -74,6 +74,9 @@ public class FabricUtil {
         Properties caClientProperties = new Properties();
         if (caCert != null) {
             caClientProperties.put("pemBytes", caCert.getBytes());
+            
+            //uncomment below line if someone wants to connect with remote ledger installtion, better is we can add it as optional plugin properties
+            //caClientProperties.put("allowAllHostNames", "true");
         }
         CryptoSuite cryptoSuite = CryptoSuite.Factory.getCryptoSuite();
         HFCAClient caClient = HFCAClient.createNewInstance(caUrl, caClientProperties);
